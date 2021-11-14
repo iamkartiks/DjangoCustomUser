@@ -1,3 +1,4 @@
+from django.db.models.manager import Manager
 from django.shortcuts import redirect, render
 from users.forms import AddressEditForm, CustomUserChangeForm, CustomUserCreationForm, EmailEditForm, UsernameEditForm
 from django.contrib.auth import authenticate, login, logout
@@ -107,6 +108,17 @@ def deleteUsername(request,pk):
         user.save()
         return redirect('/userdetails/%d'%request.user.id)
     return render(request,'djangotask/delete_field.html')
+
+
+@login_required(login_url='login')
+def deleteUser(request,pk):
+    user = CustomUser.objects.get(id=pk)
+    u = CustomUser.objects.filter(email=user)
+    if request.method=='POST':
+        u.delete()
+        return redirect('/')
+    return render(request,'djangotask/deleteuser.html')
+
 
 def logOut(request):
     logout(request)
