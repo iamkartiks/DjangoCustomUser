@@ -599,9 +599,9 @@
                 
                 <div class="info">
                   <div class>
-                  <h3>Username :<span style="margin-left:20px; color:black;">{{user.username}}</span><a href="{% url 'username_edit' %}" style="margin-left:20px; color:blue;" >Edit</a><a href="#" style="margin-left:20px; color:blue;" >Delete</a></h3>
-                  <h3>Email :<span style="margin-left:20px; color:black;">{{user.email}}</span><a href="{% url 'email_edit' %}" style="margin-left:20px; color:blue;" >Edit</a><a href="#" style="margin-left:20px; color:blue;" >Delete</a></h3>
-                  <h3>Address :<span style="margin-left:20px; color:black;">{{user.address}}</span><a href="{% url 'address_edit' %}" style="margin-left:20px; color:blue;" >Edit</a><a href="#" style="margin-left:20px; color:blue;" >Delete</a></h3>
+                  <h3>Username :<span style="margin-left:20px; color:black;">{{user.username}}</span><a href="{% url 'username_edit' %}" style="margin-left:20px; color:blue;" >Edit</a><a href="{% url 'username_delete' user.id %}" style="margin-left:20px; color:blue;" >Delete</a></h3>
+                  <h3>Email :<span style="margin-left:20px; color:black;">{{user.email}}</span><a href="{% url 'email_edit' %}" style="margin-left:20px; color:blue;" >Edit</a><a href="{% url 'email_delete' user.id %}" style="margin-left:20px; color:blue;" >Delete</a></h3>
+                  <h3>Address :<span style="margin-left:20px; color:black;">{{user.address}}</span><a href="{% url 'address_edit' %}" style="margin-left:20px; color:blue;" >Edit</a><a href="{% url 'address_delete' user.id %}" style="margin-left:20px; color:blue;" >Delete</a></h3>
                   <h3><span style="margin-left:20px; color:black;"><a href="{% url 'login' %}" style="margin-left:20px; color:black;" >log out</a></span></h3>
                   </div>
                 </div>

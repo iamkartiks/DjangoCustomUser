@@ -81,10 +81,32 @@ def usernameSettings(request):
 	context = {'form':form}
 	return render(request, 'djangotask/edit_field.html', context)
 
+@login_required(login_url='login')
+def deleteEmail(request,pk):
+    user = CustomUser.objects.get(id=pk)
+    if request.method=='POST':
+        user.email = None
+        return redirect('/userdetails/%d'%request.user.id)
+    return render(request,'djangotask/delete_field.html')
 
-def deleteField():
-    pass
 
+@login_required(login_url='login')
+def deleteAddress(request,pk):
+    user = CustomUser.objects.get(id=pk)
+    if request.method=='POST':
+        user.address = None
+        return redirect('/userdetails/%d'%request.user.id)
+    return render(request,'djangotask/delete_field.html')
+
+
+@login_required(login_url='login')
+def deleteUsername(request,pk):
+    user = CustomUser.objects.get(id=pk)
+    if request.method=='POST':
+        user.username = None
+        user.save()
+        return redirect('/userdetails/%d'%request.user.id)
+    return render(request,'djangotask/delete_field.html')
 
 def logOut(request):
     logout(request)
